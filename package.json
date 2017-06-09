@@ -1,0 +1,26 @@
+{
+  "name": "xhr-demo",
+  "version": "1.0.0",
+  "description": "Aprendiendo JSON",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/karlanavam/xhr-demo.git).git"
+  },
+  "keywords": [
+    "js",
+    "JSON"
+  ],
+  "author": "Karla Nava",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karlanavam/xhr-demo.git)/issues"
+  },
+  "homepage": "https://github.com/karlanavam/xhr-demo.git)#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}

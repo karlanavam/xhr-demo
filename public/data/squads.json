@@ -1,0 +1,10 @@
+var squads = [
+    {
+        "nombre": "chilakillers",
+        "cantidadIntegrantes": 7
+    },
+    {
+        "nombre": "jajajaSquad",
+        "cantidadIntegrantes": 7  
+    }
+];
