@@ -16,16 +16,25 @@ xhr.open("GET", "http://pokeapi.co/api/v2/pokemon/");
 
 xhr.send();
 
+function imagendiv(div) {
+       var imagen = document.createElement("img");
+       imagen.setAttribute("src", "~/Imagenes/libro.jpg");
+       var div = document.getElementById("capa");
+       div.appendChild(imagen);
+   }
+
 function crearPokemons(pokemons) {
-	var ul = document.getElementById("pokemons");
+	var section = document.getElementById("pokemons");
 
 	pokemons.forEach(function (pokemon) {
-		var li = document.createElement("li");
-		li.textContent = pokemon.name;
+		var div = document.createElement("div");
+        div.className = "col s3 center";
+		div.textContent = pokemon.name;
 
-		ul.appendChild(li);
+		section.appendChild(div);
 	});
 }
+
 
 
 
