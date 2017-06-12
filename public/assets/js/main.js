@@ -11,10 +11,13 @@ var cargarPokemones = function() {
   });
 };
 
+var contadorImg= 1;
+
 function crearPokemons(pokemons) {
 	var $section = $("#pokemons");
 
 	pokemons.forEach(function (pokemon) {
+        
 		var $img = $("<img />");
         var $div = $("<div />");
         var $p = $("<p />");
@@ -24,9 +27,8 @@ function crearPokemons(pokemons) {
         $div.addClass("pokemon center-align col s3");
         $div.attr('data-url', pokemon.url);
         
-        $img.attr("src" ,'https://dummyimage.com/100x100/000/fff');
-        $img.attr("id" ,'imgPokemon');
-        $img.addClass("center-align");
+        $img.attr("src" ,'assets/img/' + contadorImg + ".png");
+        $img.addClass("center-align responsive-img imgPokemon");
         
         $p.text(pokemon.name);
         $p.addClass("center-align");
@@ -34,6 +36,8 @@ function crearPokemons(pokemons) {
         $section.append($div);
         $div.append($img);
         $div.append($p);
+        
+        contadorImg++;
 	});
 };
 

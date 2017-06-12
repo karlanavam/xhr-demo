@@ -6,8 +6,10 @@ nav div a.brand-logo.center {
     font-size: 6.8em;
 }
 
-#imgPokemon {
+img.imgPokemon {
     display: block;
+    width: 30%;
+    height: 100px;
 }
 
 .center, .center-align{
@@ -25,4 +27,8 @@ section.container-fluid h4.center {
 
 .pokemon p{
     font-size: 1.2em;
+}
+
+#imgPokemon {
+    width: 20%;
 }
