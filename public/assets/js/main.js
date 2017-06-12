@@ -1,20 +1,68 @@
-$.getJSON("http://pokeapi.co/api/v2/pokemon/", 
-	function (response) {
-	var pokemons = response.results;
-	crearPokemons(pokemons);
-});
+var cargarPagina = function() {
+    cargarPokemones();
+    $(document).on("click", ".pokemon", cargarDetallesPokemones);
+};
+
+var cargarPokemones = function() {
+  var url ='http://pokeapi.co/api/v2/pokemon-species/';
+  $.getJSON(url, function(response){
+    var pokemons = response.results;
+    crearPokemons(pokemons);
+  });
+};
 
 function crearPokemons(pokemons) {
 	var $section = $("#pokemons");
 
 	pokemons.forEach(function (pokemon) {
-		var $div = $("<div />");
+		var $img = $("<img />");
+        var $div = $("<div />");
+        var $p = $("<p />");
         
-        $section.append($div);
+        $section.addClass("center-align");
         
-        $div.addClass("pokemon col s3 center");
-		$div.text(pokemon.name);
+        $div.addClass("pokemon center-align col s3");
         $div.attr('data-url', pokemon.url);
         
+        $img.attr("src" ,'https://dummyimage.com/100x100/000/fff');
+        $img.attr("id" ,'imgPokemon');
+        $img.addClass("center-align");
+        
+        $p.text(pokemon.name);
+        $p.addClass("center-align");
+        
+        $section.append($div);
+        $div.append($img);
+        $div.append($p);
 	});
 };
+
+var cargarDetallesPokemones = function() {
+  var url = $(this).data('url');
+  console.log(url);
+  $.getJSON(url, function(response){
+    var colorPokemon = response.color.name;
+    var habitatPokemon = response.habitat.name;
+    var shapePokemon = response.shape.name;
+    var generaPokemon = response.genera[0].genus;
+      mostrarDetallePokemon(colorPokemon, habitatPokemon, shapePokemon, generaPokemon);
+    });
+};
+
+var mostrarDetallePokemon = function(colorPokemon, habitatPokemon, shapePokemon, generaPokemon) {
+    var $detallePokemonContenedor = $('#DetallePokemon');
+        $detallePokemonContenedor.html(
+        plantilla.replace('__color__', colorPokemon)
+                .replace('__habitat__', habitatPokemon)
+                .replace('__shape__', shapePokemon)
+                .replace('__genera__', generaPokemon),
+            );
+    };
+
+var plantilla = '<h2>Datos Pokemon</h2>' +
+  '<p><strong>Color: </strong>__color__</p>' +
+  '<p><strong>Habitat: </strong>__habitat__</p>' +
+  '<p><strong>Shape: </strong>__shape__</p>' +
+  '<p><strong>Genera: </strong>__genera__</p>';
+
+$(document).ready(cargarPagina);
