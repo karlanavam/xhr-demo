@@ -32,3 +32,12 @@ section.container-fluid h4.center {
 #imgPokemon {
     width: 20%;
 }
+
+div#modal1.modal {
+    padding-left: 7%;
+}
+
+div#modal1.modal h3{
+    padding-left: -10%;
+    margin-bottom: 2%;
+}

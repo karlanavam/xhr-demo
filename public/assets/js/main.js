@@ -22,6 +22,7 @@ function crearPokemons(pokemons) {
 		var $img = $("<img />");
         var $div = $("<div />");
         var $p = $("<p />");
+        var $imgModalPokemon = $('.imgModalPokemon');
         
         $section.addClass("center-align");
         
@@ -34,10 +35,13 @@ function crearPokemons(pokemons) {
         $p.text(pokemon.name);
         $p.addClass("center-align");
         
+        $imgModalPokemon.attr("src" ,'assets/img/' + contador + ".png");
+        
         $section.append($div);
         $div.append($img);
         $div.append($p);
         $div.attr('data-target', "modal1");
+        
         
         contador++;
 	});
@@ -52,12 +56,15 @@ var cargarDetallesPokemones = function() {
     var habitatPokemon = response.habitat.name;
     var shapePokemon = response.shape.name;
     var generaPokemon = response.genera[0].genus;
+    var $imgModalPokemon = $('.imgModalPokemon');
       
       $('#name').text(nombrePokemon);
       $('#color').text(colorPokemon);
       $('#habitat').text(habitatPokemon);
       $('#shape').text(shapePokemon);
       $('#genera').text(generaPokemon);
+      
+        $imgModalPokemon.attr("src" ,'assets/img/' + contador + ".png");
       
       /*mostrarDetallePokemon(colorPokemon, habitatPokemon, shapePokemon, generaPokemon);*/
     });
