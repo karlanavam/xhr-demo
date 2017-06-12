@@ -1,6 +1,7 @@
 var cargarPagina = function() {
     cargarPokemones();
     $(document).on("click", ".pokemon", cargarDetallesPokemones);
+    $('.modal').modal();
 };
 
 var cargarPokemones = function() {
@@ -36,8 +37,9 @@ function crearPokemons(pokemons) {
         $section.append($div);
         $div.append($img);
         $div.append($p);
+        $div.attr('data-target', "modal1");
         
-        contadorImg++;
+        contador++;
 	});
 };
 
@@ -45,15 +47,23 @@ var cargarDetallesPokemones = function() {
   var url = $(this).data('url');
   console.log(url);
   $.getJSON(url, function(response){
+    var nombrePokemon = response.name;
     var colorPokemon = response.color.name;
     var habitatPokemon = response.habitat.name;
     var shapePokemon = response.shape.name;
     var generaPokemon = response.genera[0].genus;
-      mostrarDetallePokemon(colorPokemon, habitatPokemon, shapePokemon, generaPokemon);
+      
+      $('#name').text(nombrePokemon);
+      $('#color').text(colorPokemon);
+      $('#habitat').text(habitatPokemon);
+      $('#shape').text(shapePokemon);
+      $('#genera').text(generaPokemon);
+      
+      /*mostrarDetallePokemon(colorPokemon, habitatPokemon, shapePokemon, generaPokemon);*/
     });
 };
 
-var mostrarDetallePokemon = function(colorPokemon, habitatPokemon, shapePokemon, generaPokemon) {
+/*var mostrarDetallePokemon = function(colorPokemon, habitatPokemon, shapePokemon, generaPokemon) {
     var $detallePokemonContenedor = $('#DetallePokemon');
         $detallePokemonContenedor.html(
         plantilla.replace('__color__', colorPokemon)
@@ -61,14 +71,14 @@ var mostrarDetallePokemon = function(colorPokemon, habitatPokemon, shapePokemon,
                 .replace('__shape__', shapePokemon)
                 .replace('__genera__', generaPokemon),
             );
-    };
+    };*/
 
-var plantilla = '<div class="modal">' + 
+/*var plantilla = '<div class="modal">' + 
     '<h2>Datos Pokemon</h2>' +
   '<p><strong>Color: </strong>__color__</p>' +
   '<p><strong>Habitat: </strong>__habitat__</p>' +
   '<p><strong>Shape: </strong>__shape__</p>' +
   '<p><strong>Genera: </strong>__genera__</p>' +
-    '</div>';
+    '</div>';*/
 
 $(document).ready(cargarPagina);
