@@ -11,7 +11,7 @@ var cargarPokemones = function() {
   });
 };
 
-var contadorImg= 1;
+var contador = 1;
 
 function crearPokemons(pokemons) {
 	var $section = $("#pokemons");
@@ -27,7 +27,7 @@ function crearPokemons(pokemons) {
         $div.addClass("pokemon center-align col s3");
         $div.attr('data-url', pokemon.url);
         
-        $img.attr("src" ,'assets/img/' + contadorImg + ".png");
+        $img.attr("src" ,'assets/img/' + contador + ".png");
         $img.addClass("center-align responsive-img imgPokemon");
         
         $p.text(pokemon.name);
@@ -63,10 +63,12 @@ var mostrarDetallePokemon = function(colorPokemon, habitatPokemon, shapePokemon,
             );
     };
 
-var plantilla = '<h2>Datos Pokemon</h2>' +
+var plantilla = '<div class="modal">' + 
+    '<h2>Datos Pokemon</h2>' +
   '<p><strong>Color: </strong>__color__</p>' +
   '<p><strong>Habitat: </strong>__habitat__</p>' +
   '<p><strong>Shape: </strong>__shape__</p>' +
-  '<p><strong>Genera: </strong>__genera__</p>';
+  '<p><strong>Genera: </strong>__genera__</p>' +
+    '</div>';
 
 $(document).ready(cargarPagina);
