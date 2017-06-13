@@ -16,7 +16,14 @@ var contador = 1;
 
 function crearPokemons(pokemons) {
 	var $section = $("#pokemons");
+	
+	var $contenedorImgModal = $('#imgModal');
+	var $imgModal = $('<img />');
+	
+	$imgModal.attr("src" ,'assets/img/' + contador + ".png");
 
+	$contenedorImgModal.append($imgModal);
+	
 	pokemons.forEach(function (pokemon) {
         
 		var $img = $("<img />");
@@ -43,9 +50,24 @@ function crearPokemons(pokemons) {
 	});
 };
 
+/*var cargarImgModal = function(pokemons) {
+	
+	pokemons.forEach(function (pokemon) {
+		var $contenedorImgModal = $('#imgModal');
+		var $imgModal = $('<img />');
+		var contadorModal = contador - 20;
+
+		$imgModal.attr("src" ,'assets/img/' + contadorModal + ".png");
+
+		$contenedorImgModal.append($imgModal);
+	};
+	
+};*/
+
 var cargarDetallesPokemones = function() {
-  var url = $(this).data('url');
-  console.log(url);
+	var url = $(this).data('url');
+	console.log(url);
+	
   $.getJSON(url, function(response){
     var nombrePokemon = response.name;
     var colorPokemon = response.color.name;
